@@ -7,7 +7,19 @@ export const makeLogin = (email) => ({
   email,
 });
 
-export const requestCurrencies = (payload) => ({
+export const requestWallet = (payload) => ({
   type: CURRENCIES,
   payload,
 });
+
+export const fetchCurrencies = () => async (dispatch) => {
+  const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+  const data = await response.json();
+  const currenciesFetch = Object.keys(data).filter((item) => item !== 'USDT');
+  dispatch(requestWallet(currenciesFetch));
+};
+
+// Object.keys transforma meu objeto (objectCurrencies) em um array (arrayCurrencies) para permitir usar o filter.
+
+/* documentação utilizada para estudo do Object.keys:
+ https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Object/keys */
