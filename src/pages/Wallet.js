@@ -178,8 +178,8 @@ class Wallet extends React.Component {
                   { Number(expense.exchangeRates[expense.currency].ask).toFixed(2) }
                 </td>
                 <td>
-                  {(Number(expense.exchangeRates[expense.currency].ask)
-                  * expense.value).toFixed(2)}
+                  { (Number(expense.exchangeRates[expense.currency].ask)
+                  * expense.value).toFixed(2) }
                 </td>
                 <td>Real</td>
               </tr>
