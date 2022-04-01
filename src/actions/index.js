@@ -33,6 +33,6 @@ export const fetchCurrencies = () => async (dispatch) => {
 export const fetchExchanges = (list) => async (dispatch) => {
   const response = await fetch('https://economia.awesomeapi.com.br/json/all');
   const data = await response.json();
-  listExpenses.exchangeRates = data;
+  list.exchangeRates = data; // exchangeRates vem do objeto expenses e é a chave que quero adicionar ao data.
   dispatch(listExpenses(list));
 };

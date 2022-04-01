@@ -16,8 +16,8 @@ const wallet = (state = INITIAL_STATE, action) => {
     };
   case EXPENSES:
     return {
-      ...state,
-      expenses: [...state.expenses, action.payload],
+      ...state, // não altera o currencies
+      expenses: [...state.expenses, action.payload], // mas altera a chave expenses. o spread operator salva o primeiro estado para gerar o novo e atualizar o ID.
     };
   default:
     return state;

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrencies, fetchExchanges } from '../actions';
 
-let index = 0;
-const alimentos = 'Alimentação';
+let index = 0; // criação de variável por causa do lint.
+const alimentos = 'Alimentação'; // criação de variável por causa do lint.
 
 class Wallet extends React.Component {
   constructor() {
@@ -14,7 +14,7 @@ class Wallet extends React.Component {
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
-      tag: alimentos,
+      tag: alimentos, // retorna a const alimentos.
       disabled: true,
     };
   }
@@ -25,7 +25,7 @@ class Wallet extends React.Component {
   }
 
   onSubmitButton = () => {
-    const { value, description, currency, method, tag } = this.state; // variável que vai alterar o estado.
+    const { value, description, currency, method, tag } = this.state; // variável utilizada para criar o list da forma como tiver no estado.
     const { dispatchExpenses } = this.props; // chama função do dispach.
     const list = { // variável a ser passada para a função do dispatch, os valores após alterados devem ser salvos nela.
       id: index,
@@ -62,12 +62,12 @@ class Wallet extends React.Component {
   }
 
   render() {
-    const { email, currencies, expenses } = this.props;
+    const { email, currencies, expenses } = this.props; // o expenses é um array devido especificação do reducer.
     const { value, currency, description, method, tag, disabled } = this.state;
-    const totalExpenses = expenses.reduce((acc, curr) => {
-      acc += curr.value * parseFloat(curr.exchangeRates[curr.currency].ask);
-      return acc;
-    }, 0);
+    const totalExpenses = expenses.reduce((acc, curr) => { // função para somar as despesas totais. Acc é o valor atual e curr o valor que vem em seguida.
+      acc += curr.value * parseFloat(curr.exchangeRates[curr.currency].ask); // [] significa index. exchangeRates e ask vêm do objeto expenses e são as chaves que quero usar.
+      return acc; // parseFloat transforma em número. O acc += é para acrescentar os valores do pŕoximo item. curr.value pega a chave value do objeto atual * curr.exchangesRates retorna um objeto de objetos com as currency.
+    }, 0); // o 0 é o valor inicial do acc. O curr.currency verifica qual a moeda acessar o .ask e o .ask acessa achave requisitada no requisito.
     return (
       <div>
         <header>
@@ -166,6 +166,25 @@ class Wallet extends React.Component {
               <th>Editar/Excluir</th>
             </tr>
           </thead>
+          <tbody>
+            {expenses.map((expense) => (
+              <tr key={ expense.description }>
+                <td>{ expense.description }</td>
+                <td>{ expense.tag }</td>
+                <td>{ expense.method }</td>
+                <td>{ Number(expense.value).toFixed(2) }</td>
+                <td>{ (expense.exchangeRates[expense.currency].name) }</td>
+                <td>
+                  { Number(expense.exchangeRates[expense.currency].ask).toFixed(2) }
+                </td>
+                <td>
+                  {(Number(expense.exchangeRates[expense.currency].ask)
+                  * expense.value).toFixed(2)}
+                </td>
+                <td>Real</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
 
@@ -173,7 +192,11 @@ class Wallet extends React.Component {
   }
 }
 
-// <tr> define uma linha de células na tabela. <th> É para definir a célula de cabeçalho.
+// expense.exchangeRates[expense.currency].name: acessa a chave exchandeRates da moeda expense do map, puxa a chave currency (moeda) do meu expense da echangeRates e acessa e retorna a chave name.
+// Number(expense.exchangeRates[expense.currency].ask: Number para transformar em número. Agora a cessa e retorna a chave ask da currency da exhangeRates da expense.
+// (Number(expense.exchangeRates[expense.currency].ask) * expense.value).toFixed(2): Number para transformar em número. Multiplica e retorna o valor do ask da currency da exchengeRates da expense pelo value da expense.
+
+// <tr> define uma linha de células na tabela. <th> É para definir a célula de cabeçalho e <tb> as células de corpo.
 // Documentação utilizada para pesquisa:
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
 
