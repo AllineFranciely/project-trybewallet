@@ -69,7 +69,7 @@ class Wallet extends React.Component {
               id="tag"
               data-testid="tag-input"
             >
-              {categorias.map((categoria) => <option key={ categoria }>{categoria}</option>)}
+              {categorias.map((category) => <option key={ category }>{category}</option>)}
             </select>
           </label>
           <button
