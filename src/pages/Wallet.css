@@ -1,0 +1,109 @@
+.header {
+  align-content: space-around;
+  align-items: stretch;
+  background-color: rgb(248, 127, 163);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.trybewallet {
+  color: white;
+  margin-left: 6px;
+  margin-top: 40px;
+}
+
+.email {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.despesas {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.moeda {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-right: 6px;
+}
+
+.formValor {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-right: 6px;
+}
+
+.discriminação {
+  color: rgb(248, 127, 163);
+}
+
+.valor {
+  border: 1px solid rgb(165, 56, 89);
+  margin-top: 3px;
+}
+
+.descrição {
+  border: 1px solid rgb(165, 56, 89);
+  color: rgb(248, 127, 163);
+  margin-top: 3px;
+}
+
+.moedaseleção {
+  border: 1px solid rgb(165, 56, 89);
+  color: rgb(248, 127, 163);
+  margin-top: 3px;
+}
+
+.metodo {
+  border: 1px solid rgb(165, 56, 89);
+  color: rgb(248, 127, 163);
+  margin-top: 3px;
+}
+
+.categoria {
+  border: 1px solid rgb(165, 56, 89);
+  color: rgb(248, 127, 163);
+  margin-top: 3px;
+}
+
+.adicionar {
+  border: 1px solid rgb(165, 56, 89);
+  color: rgb(248, 127, 163);
+  margin-left: 84%;
+  margin-top: 4px;
+}
+
+.adicionar:hover {
+  box-shadow: 0 12px 16px 0 rgb(180, 93, 119), 0 17px 50px 0 rgb(180, 93, 119);
+  cursor: pointer;
+}
+
+.tabela {
+  border: 1px solid rgb(165, 56, 89);
+  margin-top: 10%;
+}
+
+.headtable {
+  color: rgb(165, 56, 89);
+}
+
+.th {
+  border: 1px solid rgb(165, 56, 89);
+}
+
+.bodytable {
+  color: rgb(248, 127, 163);
+}
+
+.td {
+  border: 1px solid rgb(165, 56, 89);
+}

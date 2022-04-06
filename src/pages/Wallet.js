@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrencies, fetchExchanges } from '../actions';
+import './Wallet.css';
 
 let index = 0; // criação de variável por causa do lint.
 const alimentos = 'Alimentação'; // criação de variável por causa do lint.
@@ -70,19 +71,26 @@ class Wallet extends React.Component {
     }, 0); // o 0 é o valor inicial do acc. O curr.currency verifica qual a moeda acessar o .ask e o .ask acessa achave requisitada no requisito.
     return (
       <div>
-        <header>
-          <h2>TrybeWallet</h2>
-          <p>E-mail:</p>
-          <p data-testid="email-field">{ email }</p>
-          <p>Despesas totais:</p>
-          <p data-testid="total-field">{ totalExpenses.toFixed(2) }</p>
-          <p>Moeda:</p>
-          <p data-testid="header-currency-field">BRL</p>
+        <header className="header">
+          <h3 className="trybewallet">TrybeWallet</h3>
+          <div className="email">
+            <p>E-mail:</p>
+            <p data-testid="email-field">{ email }</p>
+          </div>
+          <div className="despesas">
+            <p>Despesas totais:</p>
+            <p data-testid="total-field">{ totalExpenses.toFixed(2) }</p>
+          </div>
+          <div className="moeda">
+            <p>Moeda:</p>
+            <p data-testid="header-currency-field">BRL</p>
+          </div>
         </header>
-        <form>
+        <form className="formValor">
           <label htmlFor="value">
-            <b>Valor:</b>
+            <b className="discriminação">Valor:</b>
             <input
+              className="valor"
               type="number"
               name="value"
               data-testid="value-input"
@@ -92,8 +100,9 @@ class Wallet extends React.Component {
             />
           </label>
           <label htmlFor="description">
-            <b>Descrição:</b>
+            <b className="discriminação">Descrição:</b>
             <input
+              className="descrição"
               type="text"
               name="description"
               data-testid="description-input"
@@ -103,8 +112,9 @@ class Wallet extends React.Component {
             />
           </label>
           <label htmlFor="currency">
-            <b>Moeda:</b>
+            <b className="discriminação">Moeda:</b>
             <select
+              className="moedaseleção"
               id="currency"
               name="currency"
               value={ currency }
@@ -114,8 +124,9 @@ class Wallet extends React.Component {
             </select>
           </label>
           <label htmlFor="method">
-            <b>Método de pagamento:</b>
+            <b className="discriminação">Método de pagamento:</b>
             <select
+              className="metodo"
               id="method"
               name="method"
               data-testid="method-input"
@@ -128,8 +139,9 @@ class Wallet extends React.Component {
             </select>
           </label>
           <label htmlFor="tag">
-            <b>Categoria:</b>
+            <b className="discriminação">Categoria:</b>
             <select
+              className="categoria"
               id="tag"
               name="tag"
               data-testid="tag-input"
@@ -145,6 +157,7 @@ class Wallet extends React.Component {
           </label>
         </form>
         <button
+          className="adicionar"
           data-testid="edit-button-save"
           type="button"
           disabled={ disabled }
@@ -152,36 +165,36 @@ class Wallet extends React.Component {
         >
           Adicionar despesa
         </button>
-        <table>
-          <thead>
+        <table className="tabela">
+          <thead className="headtable">
             <tr>
-              <th>Descrição</th>
-              <th>Tag</th>
-              <th>Método de pagamento</th>
-              <th>Valor</th>
-              <th>Moeda</th>
-              <th>Câmbio utilizado</th>
-              <th>Valor convertido</th>
-              <th>Moeda de conversão</th>
-              <th>Editar/Excluir</th>
+              <th className="th">Descrição</th>
+              <th className="th">Tag</th>
+              <th th className="th">Método de pagamento</th>
+              <th th className="th">Valor</th>
+              <th th className="th">Moeda</th>
+              <th th className="th">Câmbio utilizado</th>
+              <th th className="th">Valor convertido</th>
+              <th th className="th">Moeda de conversão</th>
+              <th th className="th">Editar/Excluir</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bodytable">
             {expenses.map((expense) => (
               <tr key={ expense.description }>
-                <td>{ expense.description }</td>
-                <td>{ expense.tag }</td>
-                <td>{ expense.method }</td>
-                <td>{ Number(expense.value).toFixed(2) }</td>
-                <td>{ (expense.exchangeRates[expense.currency].name) }</td>
-                <td>
+                <td className="td">{ expense.description }</td>
+                <td className="td">{ expense.tag }</td>
+                <td className="td">{ expense.method }</td>
+                <td className="td">{ Number(expense.value).toFixed(2) }</td>
+                <td className="td">{ (expense.exchangeRates[expense.currency].name) }</td>
+                <td className="td">
                   { Number(expense.exchangeRates[expense.currency].ask).toFixed(2) }
                 </td>
-                <td>
+                <td className="td">
                   { (Number(expense.exchangeRates[expense.currency].ask)
                   * expense.value).toFixed(2) }
                 </td>
-                <td>Real</td>
+                <td className="td">Real</td>
               </tr>
             ))}
           </tbody>

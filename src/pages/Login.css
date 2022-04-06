@@ -1,0 +1,33 @@
+body {
+  background-image: url('./gifporquinho3.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form {
+  align-content: flex-start;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputEmail {
+  border: solid 1px rgb(248, 127, 163);
+}
+
+.inputSenha {
+  border: solid 1px rgb(248, 127, 163);
+  margin-top: 3px;
+}
+
+.button {
+  border: 1px solid rgb(248, 127, 163);
+  color: rgb(248, 127, 163);
+  margin-top: 4px;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgb(180, 93, 119), 0 17px 50px 0 rgb(180, 93, 119);
+  cursor: pointer;
+}
